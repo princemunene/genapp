@@ -891,6 +891,7 @@ $( ".datepicker" ).datepicker();
 $('.nativedatepicker').focus(function(event) {
     var currentField = $(this);
     var myNewDate = Date.parse(currentField.val()) || new Date();
+    myNewDate = new Date (myNewDate);
 
     // Same handling for iPhone and Android
     window.plugins.datePicker.show({
