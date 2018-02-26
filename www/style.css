@@ -58,7 +58,7 @@ font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
 margin: 0;
 padding: 0;
 color: #232323;
-font-size: 14px;
+font-size: 20px;
 line-height: 1.4;
 width: 100%;
 -webkit-text-size-adjust: 100%;
@@ -1883,7 +1883,7 @@ margin:auto;
 
 .loginform{
 	
-    height: 180px; 
+    height: 220px; 
     background-color: none;
     background:#fff;border:1px solid #ccc;border-radius:10px;padding:2%;
     position: absolute;
@@ -1908,17 +1908,18 @@ float:left;
 clear:both;
 }
 .form_row_icon{
-width:10%;
+width:40px;
 float:left;
 }
 .form_row_icon img{
-width:80%;
+width:100%;
 display:block;
 }
 .loginform input.form_input{
-padding:10px 0 10px 3%; 
-width:85%; 
-margin:0 0 5px 5%;
+padding:10px 0 10px 10px; 
+float:right;
+margin:0 0 5px 10px;
+width:calc(100% - 70px);
 
 border:1px solid #ccc;border-radius:5px;
 background:#f0f0f0;

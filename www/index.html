@@ -34,7 +34,7 @@ window.localStorage.setItem('ls_userid',0);
 
         <div class="pages">
 
-          <div data-page="index" class="page homepage">
+          <div data-page="indexmain" class="page homepage">
             <div class="page-content">
 					   <div class="logo"><h1>EazzyPos</h1><span><br/>Smart Point of Sale at Hand</span></div>
               <div id="divtest"></div>    
@@ -117,9 +117,62 @@ $.ajax({
   data:{username:username, passwd:passwd,userbranch:userbranch},
   success:function(data){
   if(data==1){
-  window.localStorage.setItem('ls_userid',username);
-  window.localStorage.setItem('database',userbranch);
-  window.location.href = "main.html";
+
+        window.localStorage.setItem('ls_userid',username);
+        window.localStorage.setItem('database',userbranch);
+        window.localStorage.setItem('password',passwd);
+
+        var usertype = '';
+        var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=1&user="+username+"&database="+userbranch;
+        $.getJSON(url, function(result) {
+            console.log(result);
+            $.each(result, function(i, field) {
+                 usertype = field.position;window.localStorage.setItem('ls_usertype',usertype);
+                 fullname = field.fullname;window.localStorage.setItem('ls_fullname',fullname);
+            });
+        });
+
+
+        
+       
+
+       setTimeout(function() {
+
+      
+       var usertype = window.localStorage.getItem('ls_usertype');
+
+      var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=2&user="+username+"&database="+userbranch;
+        $.getJSON(url, function(result) {
+             var rights =[]; rights[901]='YES';rights[902]='YES';rights[903]='YES';
+            console.log(result);
+            $.each(result, function(i, field) {
+                var code = field.AccessCode;
+                var res = field[usertype];
+                 rights[code]=res;
+                });
+              window.localStorage.setItem("rights", JSON.stringify(rights));
+
+           window.location.href = "main.html";
+           var rights = JSON.parse(localStorage.getItem("rights")); 
+          
+        });
+
+
+
+
+
+      }, 1000);
+
+
+
+
+
+  
+
+
+        
+
+        
   }else{
   $('#message').html('<img src="images/icons/blue/lock.png" alt="" title="" />');
   swal("Error", "Incorrect Login Credentials!", "error");
@@ -136,6 +189,10 @@ function checknet(){
 
  var cart = [[]];
  localStorage.setItem("cart", JSON.stringify(cart));
+//set variables
+$('#database').val(window.localStorage.getItem('database'));
+$('#username').val(window.localStorage.getItem('ls_userid'));
+$('#passwd').val(window.localStorage.getItem('password'));
 
  $("#divtest").html("<img src='http://"+window.localStorage.getItem('server')+"/bullet.png' style='display:none'  onerror='checknet()' />");
 </script>

@@ -66,34 +66,7 @@ function auto_logout(){
         }); 
 
 
-        var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=1&user="+username+"&database="+database;
-        $.getJSON(url, function(result) {
-            console.log(result);
-            $.each(result, function(i, field) {
-                var usertype = field.position;window.localStorage.setItem('ls_usertype',usertype);
-                var fullname = field.fullname;window.localStorage.setItem('ls_fullname',fullname);
-                //alert(usertype)
-            });
-        });
-
-
-
-       var rights =[]; rights[901]='YES';rights[902]='YES';rights[903]='YES';
-       var usertype = window.localStorage.getItem('ls_usertype');
-        var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=2&user="+username+"&database="+database;
-        $.getJSON(url, function(result) {
-            console.log(result);
-            $.each(result, function(i, field) {
-                var code = field.AccessCode;
-                var res = field[usertype];
-                 rights[code]=res;
-                });
-              window.localStorage.setItem("rights", JSON.stringify(rights));
-           //alert(rights[152])
-        });
-
-
-
+        
         var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=3&user="+username+"&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
@@ -235,7 +208,7 @@ function auto_logout(){
 
                         <ul>
                          
-                            <li id="rights106" style="display:none;background:#85af5d"><a href="listshop.html"><img src="images/icons/white/shop.png" alt="" title="" /><span>SALES</span></a></li>
+                          <li id="rights106" style="display:none;background:#85af5d"><a href="listshop.html"><img src="images/icons/white/shop.png" alt="" title="" /><span>SALES</span></a></li>
                           <li id="rights106" style="display:none;background:#c53238"><a href="cart.html"><img src="images/icons/white/cart.png" alt="" title="" /><span>CART</span><script>if(items>0){document.write('<div class="cartitems">'+items+'</div>')}</script></a></li>
                           
                              <li id="rights155" style="display:none;background:#967adc"><a href="customers.html"><img src="images/icons/white/users.png" alt="" title="" /><span>CUSTOMERS</span></a></li>
@@ -275,4 +248,5 @@ function auto_logout(){
 <script type="text/javascript" src="js/jquery.swipebox.js"></script>
 <script type="text/javascript" src="js/sweetalert.js"></script>
 <script type="text/javascript" src="js/canvas.js"></script>
+<script type="text/javascript"> window.location.hash="#index";</script>
 

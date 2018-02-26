@@ -39,6 +39,9 @@ curl_close( $ch );
 echo $result;
 */
 
+
+/*
+
 $body='LKR8EMIK72 confirmed.You bought Ksh50.00 of airtime on 27/11/17 at 9:20 PM.New M-PESA balance is Ksh639.11. Transaction cost, Ksh0.00.';
 
 $filters=array();
@@ -56,4 +59,54 @@ foreach ($filters as $key => $val) {
 
 $mil = 1511849360657;
 
+*/
+
 ?>
+<script type="text/javascript" src="js/jquery-1.10.1.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script src="js/jquery.validate.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/framework7.js"></script>
+<script type="text/javascript" src="js/my-app.js"></script>
+<script type="text/javascript" src="js/jquery.swipebox.js"></script>
+<script type="text/javascript" src="js/email.js"></script>
+<script type="text/javascript" src="js/sweetalert.js"></script>
+
+        <script>
+        var rights =new Array(); 
+        rights[901]='YES';rights[902]='YES';rights[903]='YES';
+  
+
+
+            var usertype = 'Admin';
+            var username = 'pm001';
+            var userbranch = 'masii';
+            var server='qet.co.ke/genapp/www';
+
+
+            var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=2&user="+username+"&database="+userbranch;
+            $.getJSON(url, function(result) {
+
+              alert()
+
+            console.log(result);
+             alert(rights[901])
+              $.each(result, function(i, field) {
+                var code = field.AccessCode;
+                var res = field[usertype];
+                rights[code]=res;
+                });
+
+              window.localStorage.setItem("rights", JSON.stringify(rights));
+
+
+
+
+           //window.location.href = "main.html";
+           var rights = JSON.parse(localStorage.getItem("rights")); 
+           
+          
+       
+        });
+
+       </script>
+

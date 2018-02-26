@@ -33,6 +33,7 @@ input,
 textarea,
 select {
   outline: 0;
+  font-size: 20px;
 }
 /* === Grid === */
 .row {
