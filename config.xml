@@ -41,4 +41,5 @@
      <plugin spec="https://github.com/alfonsovinti/cordova-plugin-bixolon-print.git" source="git" />
      <plugin spec="https://github.com/srehanuddin/Cordova-Plugin-Bluetooth-Printer.git" source="git" />
      <plugin spec="https://github.com/katzer/cordova-plugin-printer.git" source="git" />
+      <plugin spec="https://github.com/mrfoh/cordova-datepicker-plugin.git" source="git" />
 </widget>
