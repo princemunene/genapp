@@ -898,10 +898,10 @@ myApp.onPageInit('features', function (page) {
 })
 myApp.onPageInit('reports', function (page) {
     window.location.hash="reports";  
-$( ".datepicker" ).datepicker();
+//$( ".datepicker" ).datepicker();
 
 
-$('.nativedatepicker').focus(function(event) {
+$('.datepicker').focus(function(event) {
     var currentField = $(this);
     var myNewDate = Date.parse(currentField.val()) || new Date();
     myNewDate = new Date (myNewDate);
