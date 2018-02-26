@@ -879,6 +879,19 @@ myApp.onPageInit('dashboard', function (page)  {
  
 
 })
+
+function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [day, month, year].join('/');
+}
+
 myApp.onPageInit('features', function (page) {
     window.location.hash="features";  
  $('#regn').focus();$( ".datepicker" ).datepicker()
@@ -900,7 +913,7 @@ $('.nativedatepicker').focus(function(event) {
       allowOldDates : true
     }, function(returnDate) {
       var newDate = new Date(returnDate);
-      currentField.val(newDate.toString("dd/mm/yy"));
+      currentField.val(formatDate(newDate));
 
       // This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
       currentField.blur();

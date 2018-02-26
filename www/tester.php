@@ -72,41 +72,20 @@ $mil = 1511849360657;
 <script type="text/javascript" src="js/sweetalert.js"></script>
 
         <script>
-        var rights =new Array(); 
-        rights[901]='YES';rights[902]='YES';rights[903]='YES';
-  
+    function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
 
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
 
-            var usertype = 'Admin';
-            var username = 'pm001';
-            var userbranch = 'masii';
-            var server='qet.co.ke/genapp/www';
+    return [day, month, year].join('/');
+}
 
+alert(formatDate('Sun May 11,2014 00:00:00 GMT+0300 (EAT)'));
 
-            var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=2&user="+username+"&database="+userbranch;
-            $.getJSON(url, function(result) {
-
-              alert()
-
-            console.log(result);
-             alert(rights[901])
-              $.each(result, function(i, field) {
-                var code = field.AccessCode;
-                var res = field[usertype];
-                rights[code]=res;
-                });
-
-              window.localStorage.setItem("rights", JSON.stringify(rights));
-
-
-
-
-           //window.location.href = "main.html";
-           var rights = JSON.parse(localStorage.getItem("rights")); 
-           
-          
-       
-        });
 
        </script>
 
