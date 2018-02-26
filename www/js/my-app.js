@@ -899,7 +899,7 @@ $('.nativedatepicker').focus(function(event) {
       allowOldDates : true
     }, function(returnDate) {
       var newDate = new Date(returnDate);
-      currentField.val(newDate.toString("dd/MMM/yyyy"));
+      currentField.val(newDate.toString("dd/mm/yy"));
 
       // This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
       currentField.blur();
