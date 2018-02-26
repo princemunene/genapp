@@ -906,6 +906,8 @@ $('.nativedatepicker').focus(function(event) {
     });
   });
 
+
+/*
   $('.nativetimepicker').focus(function(event) {
     var currentField = $(this);
     var time = currentField.val();
@@ -927,6 +929,8 @@ $('.nativedatepicker').focus(function(event) {
       currentField.blur();
     });
   });
+
+*/
 
 
     $.ajax({
