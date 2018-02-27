@@ -452,6 +452,9 @@ function salesrep(code){
     }
     else{
 
+       window.location.hash="#output"; 
+      $('#accdiv').hide();
+
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -468,7 +471,8 @@ function salesrep(code){
 
 function todayrefunds(){
  
-   
+    window.location.hash="#output"; 
+    $('#accdiv').hide();
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
     url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -492,7 +496,8 @@ function refundsrep(code){
     swal("Error", "Enter both Start and End dates!", "error");
     }
     else{
-
+       window.location.hash="#output"; 
+    $('#accdiv').hide();
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -507,7 +512,8 @@ function refundsrep(code){
 
 
 function pricelist(){
- 
+  window.location.hash="#output"; 
+    $('#accdiv').hide();
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
     url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -520,7 +526,8 @@ function pricelist(){
 }
 
 function valuation(){
- 
+  window.location.hash="#output"; 
+    $('#accdiv').hide();
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
     url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -543,7 +550,8 @@ function stocktrackrep(code){
     swal("Error", "Enter both Start and End dates!", "error");
     }
     else{
-
+ window.location.hash="#output"; 
+    $('#accdiv').hide();
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -557,7 +565,8 @@ function stocktrackrep(code){
 }
 
 function sysusers(){
- 
+  window.location.hash="#output"; 
+    $('#accdiv').hide();
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
@@ -574,7 +583,8 @@ function sysusers(){
 
 function todayexpenses(){
  
-   
+    window.location.hash="#output"; 
+    $('#accdiv').hide();
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
     url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -602,7 +612,8 @@ function exprep(code){
     swal("Error", "Enter both Start and End dates!", "error");
     }
     else{
-
+ window.location.hash="#output"; 
+    $('#accdiv').hide();
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -617,7 +628,8 @@ function exprep(code){
 
 
 function todaybank(){
- 
+  window.location.hash="#output"; 
+    $('#accdiv').hide();
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
@@ -643,7 +655,8 @@ function bankrep(code){
     swal("Error", "Enter both Start and End dates!", "error");
     }
     else{
-
+ window.location.hash="#output"; 
+    $('#accdiv').hide();
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -658,7 +671,8 @@ function bankrep(code){
 
 
 function chartofaccounts(){
- 
+  window.location.hash="#output"; 
+    $('#accdiv').hide();
    
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
@@ -681,7 +695,8 @@ function ledrep(code){
     swal("Error", "Enter both Start and End dates!", "error");
     }
     else{
-
+ window.location.hash="#output"; 
+    $('#accdiv').hide();
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -705,7 +720,8 @@ function finrep(code){
     swal("Error", "End date is mandatory!", "error");
     }
     else{
-
+ window.location.hash="#output"; 
+    $('#accdiv').hide();
       $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -2725,7 +2741,8 @@ function audittrail(){
 		}
 		
 		else{
-		    
+		   window.location.hash="#output"; 
+    $('#accdiv').hide();  
        $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
