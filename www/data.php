@@ -94,6 +94,7 @@ $pname=stripslashes($row['name']);
 									$itquat = $_SESSION['cart'][$i][2];
 									$itprice = $_SESSION['cart'][$i][3];
 									$tprice = $_SESSION['cart'][$i][4];
+									$refno=$imei = $_SESSION['cart'][$i][5];
 
 									$tvat =  0;
 									$tdisc = 0;
@@ -115,7 +116,7 @@ $pname=stripslashes($row['name']);
 									
 									$string.=$itname.';';
 									if($cname==''){$cname='Customer';}
-									$resulta = mysql_query("insert into sales values('0','Sale','".$smode."','".$saleno."','".$rcptno."','".$invno."','".$itcode."','".$itname."','".$itquat."','".$itprice."','".$tvat."','".$tdisc."','".$ftotal."','".$itcost."','".$date."','".date('h:i a')."','".$cid."','".$cname."','".$pid."','".$pname."','".$amount."','".$change."','".$stamp."','".$username."',1,'OTC SALES-REF NO:".$refno."','".$userbranch."','','','')");
+									$resulta = mysql_query("insert into sales values('0','Sale','".$smode."','".$saleno."','".$rcptno."','".$invno."','".$itcode."','".$itname."','".$itquat."','".$itprice."','".$tvat."','".$tdisc."','".$ftotal."','".$itcost."','".$date."','".date('h:i a')."','".$cid."','".$cname."','".$pid."','".$pname."','".$amount."','".$change."','".$stamp."','".$username."',1,'REF NO:".$imei."','".$userbranch."','','','')");
 					
 					
 										//update reduction of items
@@ -124,7 +125,7 @@ $pname=stripslashes($row['name']);
 																			
 										$totgoods+=$itcost;
 										//insert into stock track
-										$resultd = mysql_query("insert into stocktrack values('0','".date('Y/m/d')."','".$userbranch."','".$itcode."','".$itname."','".$pack."','".$stockdesc."','".$itquat."','".$bal."','".$username."','".$stamp."')");	
+										$resultd = mysql_query("insert into stocktrack values('0','".date('Y/m/d')."','".$userbranch."','".$itcode."','".$itname."','".$pack."','".$stockdesc."-".$imei."','".$itquat."','".$bal."','".$username."','".$stamp."')");	
 										$resultb= mysql_query("update items set ".$userbranch."='".$bal."',Qsold='".$qsold."' where ItemCode='".$itcode."'");
 										
 

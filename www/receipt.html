@@ -69,6 +69,7 @@
       tendered=array[i]['AmountPaid'].replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');tendered=parseFloat(tendered,10);
       change=array[i]['Change'].replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');change=parseFloat(change,10);
       cashier=array[i]['Cashier'];
+      refno=array[i]['Desc'];
      }
 
     
@@ -107,7 +108,8 @@
           <div style="clear:both;border-bottom:1px dashed #333;margin-bottom:5px"></div>
 
            <p style="text-align:left;   font-weight:normal; margin:0 0 0 10px; "><script>document.write(doctype)</script> No: <b><script>document.write(rcptno)</script></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Date: <b><script>document.write(date)</script></b><br/>
-            <script>if(client!=''){document.write('Client: <b>'+client+'</b>')}</script></p>
+            <script>if(client!=''){document.write('Client: <b>'+client+'</b>')}</script>
+            <br/><script>if(refno!=''){document.write('<b>[ '+refno+' ]</b>')}</script></p>
 
            <div style="clear:both;border-bottom:1px dashed #333;margin-bottom:0px"></div>
            <p style="font-weight:bold; margin:0 0 0 0px;padding-bottom:0"><script>document.write(formatstring('Item Name',30)+formatstring('Qty',5)+'Total')</script></p>

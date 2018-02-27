@@ -426,7 +426,8 @@ var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=5&para
 
 function todaysales(){
  
-   
+    window.location.hash="#output"; 
+    $('#accdiv').hide();
     $("#reportdiv").html('<img id="img-spinner" src="images/load.gif" style="" alt="Loading"/>');
     $.ajax({
     url:'http://'+window.localStorage.getItem('server')+'/report.php?database='+database,
@@ -894,11 +895,31 @@ function formatDate(date) {
 
 myApp.onPageInit('features', function (page) {
     window.location.hash="features";  
- $('#regn').focus();$( ".datepicker" ).datepicker()
+ $('#regn').focus();
+
+$('.datepicker').focus(function(event) {
+    var currentField = $(this);
+    var myNewDate = Date.parse(currentField.val()) || new Date();
+    myNewDate = new Date (myNewDate);
+
+    // Same handling for iPhone and Android
+    window.plugins.datePicker.show({
+      date : myNewDate,
+      mode : 'date', // date or time or blank for both
+      allowOldDates : true
+    }, function(returnDate) {
+      var newDate = new Date(returnDate);
+      currentField.val(formatDate(newDate));
+
+      // This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
+      currentField.blur();
+    });
+  });
+
 })
 myApp.onPageInit('reports', function (page) {
     window.location.hash="reports";  
-//$( ".datepicker" ).datepicker();
+
 
 
 $('.datepicker').focus(function(event) {
@@ -1206,7 +1227,24 @@ myApp.onPageInit('addcontrol', function (page) {
 
 myApp.onPageInit('expenses', function (page) {
   window.location.hash="expenses";  
-$( ".datepicker" ).datepicker();
+$('.datepicker').focus(function(event) {
+    var currentField = $(this);
+    var myNewDate = Date.parse(currentField.val()) || new Date();
+    myNewDate = new Date (myNewDate);
+
+    // Same handling for iPhone and Android
+    window.plugins.datePicker.show({
+      date : myNewDate,
+      mode : 'date', // date or time or blank for both
+      allowOldDates : true
+    }, function(returnDate) {
+      var newDate = new Date(returnDate);
+      currentField.val(formatDate(newDate));
+
+      // This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
+      currentField.blur();
+    });
+  });
 
 
       $.ajax({
@@ -1239,7 +1277,24 @@ $( ".datepicker" ).datepicker();
 
 myApp.onPageInit('bank', function (page) {
    window.location.hash="bank";  
-$( ".datepicker" ).datepicker();
+$('.datepicker').focus(function(event) {
+    var currentField = $(this);
+    var myNewDate = Date.parse(currentField.val()) || new Date();
+    myNewDate = new Date (myNewDate);
+
+    // Same handling for iPhone and Android
+    window.plugins.datePicker.show({
+      date : myNewDate,
+      mode : 'date', // date or time or blank for both
+      allowOldDates : true
+    }, function(returnDate) {
+      var newDate = new Date(returnDate);
+      currentField.val(formatDate(newDate));
+
+      // This fixes the problem you mention at the bottom of this script with it not working a second/third time around, because it is in focus.
+      currentField.blur();
+    });
+  });
         var url = "http://"+window.localStorage.getItem('server')+"/bridge.php?id=17&subcat=Bank&database="+database;
         $.getJSON(url, function(result) {
             console.log(result);
@@ -1251,6 +1306,11 @@ $( ".datepicker" ).datepicker();
         }); 
 
 })
+
+myApp.onPageInit('about', function (page) {
+   window.location.hash="about";  
+})
+
 
 
 myApp.onPageInit('settings', function (page) {
@@ -1764,7 +1824,7 @@ myApp.onPageInit('newcustomer', function (page) {
 myApp.onPageInit('editcustomer', function (page) {
       window.location.hash="editcustomer";    
       var cusno = window.localStorage.getItem('syscusno');
-      $('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/upload.php?database='+database);
+      //$('#uploadphoto').attr('action', 'http://'+window.localStorage.getItem('server')+'/upload.php?database='+database);
       
       $.ajax({
       url:'http://'+window.localStorage.getItem('server')+'/bridge.php?database='+database,
@@ -2074,6 +2134,7 @@ var bal = $('#itembal').html();
 var qty = $('#quantity').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
 var price = $('#price').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
 var total = $('#total').val().replace(/[&\/\\#,+()$~%'":*?<>{}]/g,'');
+var imei = $('#imei').val();
 
 if(code==''||qty==''||price==''||total==''){
 swal("Error", "The Price,Quantity and Total Fields cannot be empty!", "error");
@@ -2092,7 +2153,7 @@ else{
 		
 		var array = JSON.parse(localStorage.getItem("cart"));
 		array=removeifexists(array,code);
-		newarray = new Array(code, name, qty, price, total);
+		newarray = new Array(code, name, qty, price, total, imei);
 		array.push(newarray);
 		//array=multiDimensionalUnique(array);
 		localStorage.setItem("cart", JSON.stringify(array));
@@ -2719,6 +2780,16 @@ window.addEventListener('popstate', function(event) {
         else if(window.location.href.indexOf('#refunds') >= 0){
           $('#backtorefunds a')[0].click();
         }
+        else if(window.location.href.indexOf('#items') >= 0){
+          $('#backtoitems a')[0].click();
+        }
+        else if(window.location.href.indexOf('#stockcontrol') >= 0){
+          $('#backtocontrol a')[0].click();
+        }
+         else if(window.location.href.indexOf('#reports') >= 0){
+          $('#reportdiv').html('');$('#accdiv').show();
+        }
+       
        
        
         

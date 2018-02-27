@@ -16,7 +16,6 @@ font-size:9px;
 }
 }
 </style>
-
 <?php
 switch($id){
 
@@ -47,7 +46,7 @@ echo'<tr style="width:100%; height:20px;padding:0; background:'.$col.'; font-wei
 ?>
 <td  style="width:4%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo $aa ?></td>
 <td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo dateprint($rowa['Date']) ?></td>
-<td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo $refno ?></td>
+<td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo $refno ?>-<?php  echo stripslashes($row['Desc']) ?></td>
 <td  style="width:30%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa['ItemName']) ?></td>
 <td  style="width:11%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo stripslashes($rowa['Qty']) ?></td>
 <td  style="width:10%;border-width:0.5px; border-color:#666; border-style:solid;padding:5px "><?php  echo number_format($rowa['UnitPrice'], 2, ".", "," ) ?></td>

@@ -76,6 +76,7 @@ window.localStorage.setItem('ls_userid',0);
 
 <script type="text/javascript">
 $(document).ready(function(){
+
 //var server='localhost/genapp/www';
 var server='qet.co.ke/genapp/www';
 window.localStorage.setItem('server',server);
@@ -118,7 +119,10 @@ $.ajax({
   success:function(data){
   if(data==1){
 
+
+
         window.localStorage.setItem('ls_userid',username);
+        window.localStorage.setItem('username',username);
         window.localStorage.setItem('database',userbranch);
         window.localStorage.setItem('password',passwd);
 
@@ -191,7 +195,7 @@ function checknet(){
  localStorage.setItem("cart", JSON.stringify(cart));
 //set variables
 $('#database').val(window.localStorage.getItem('database'));
-$('#username').val(window.localStorage.getItem('ls_userid'));
+$('#username').val(window.localStorage.getItem('username'));
 $('#passwd').val(window.localStorage.getItem('password'));
 
  $("#divtest").html("<img src='http://"+window.localStorage.getItem('server')+"/bullet.png' style='display:none'  onerror='checknet()' />");
